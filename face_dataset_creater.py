@@ -37,6 +37,7 @@ def main():
             break
     cam.release()
     cv2.destroyAllWindows()
-    settings.myList.append('Creation')
+    if 'Creation' not in settings.myList:
+        settings.myList.append('Creation')
 
 main()
