@@ -11,8 +11,14 @@ def main(pid,pname):
 		module = __import__(pname)
 		func = getattr(module, 'main')
 		func()
-		end = time.clock()
-		print("%s Task Completed In : "%(settings.myList[pid]),end='')
-		print("%.3gs" %(end-start))
 	except:
-		settings.myList.append('Untitled')
+		if pname is 'cam_setting':
+			settings.myList.append('Camera Settings')
+		elif pname is 'face_dataset_creater':
+			if 'Creation' not in settings.myList:
+				settings.myList.append('Creation')
+		else:
+			settings.myList.append(pname)
+	end = time.clock()
+	print("%s Task Completed In : "%(settings.myList[pid]),end='')
+	print("%.3gs" %(end-start))
